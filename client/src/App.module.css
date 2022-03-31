@@ -1,0 +1,14 @@
+.navigate {
+    display: flex;
+    justify-content: space-around;
+}
+
+.active{
+    background: red;
+}
+
+
+
+.notActive{
+
+}

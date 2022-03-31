@@ -1,0 +1,19 @@
+.id{
+    width: 100px;
+}
+
+.name{
+    width: 200px;
+}
+
+.description{
+    width: 350px;
+}
+
+.createdAt{
+    width: 150px;
+    text-align: center;
+    border-right: 1px solid silver;
+}
+
+

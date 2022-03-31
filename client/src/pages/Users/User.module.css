@@ -1,0 +1,77 @@
+.row{
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-content: center;*/
+    /*margin: 0 auto;*/
+    position: relative;
+}
+
+.create {
+    position: absolute;
+    left: 0;
+    top: -100px;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 300px;
+
+}
+
+.createForm {
+
+}
+
+.updateForm {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 20px;
+}
+
+
+.header {
+    display: flex;
+    justify-content: center;
+    border: 1px solid silver;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.id {
+    width: 50px;
+    text-align: center;
+    border-right: 1px solid silver;
+}
+
+.email {
+    text-align: center;
+    width: 300px;
+    border-right: 1px solid silver;
+}
+
+.group {
+    border-right: 1px solid silver;
+    width: 100px;
+    text-align: center;
+}
+
+.admin {
+    width: 120px;
+    text-align: center;
+    border-right: 1px solid silver;
+}
+
+.actions {
+    width: 150px;
+    text-align: center;
+}
+
+
+
+
+

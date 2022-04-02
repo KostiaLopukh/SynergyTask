@@ -5,7 +5,7 @@ import {ErrorHandler} from '../errors/errorHandler';
 import {Group, User} from '../entity';
 import {ParamsDictionary} from '../interfaces/ParamsDictionary';
 import {IGroup} from '../interfaces/IGroup';
-import {IUser} from "../interfaces/IUser";
+import {IUser} from '../interfaces/IUser';
 
 class GroupController {
     public async getAll(req: Request, res: Response, next: NextFunction) {
@@ -26,7 +26,7 @@ class GroupController {
 
             await getManager().getRepository(Group)
                 .update({id}, {group: name, description});
-            res.end();
+            res.status(200).end();
         } catch (e) {
             next(e);
         }
@@ -48,7 +48,7 @@ class GroupController {
             await getManager().getRepository(Group)
                 .delete({id});
 
-            res.end();
+            res.status(200).end();
         } catch (e) {
             next(e);
         }
@@ -60,7 +60,7 @@ class GroupController {
             await getManager().getRepository(Group)
                 .save({group: name, description});
 
-            res.end();
+            res.status(200).end();
         } catch (e) {
             next(e);
         }

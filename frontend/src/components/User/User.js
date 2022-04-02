@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import css from "../../pages/Users/User.module.css";
 import {userService} from "../../services/userService";
 import {groupNameById} from "../../helpers/groupNameById";
 
 const User = ({user, allowToRerender, allowToUpdateForm, groups}) => {
     let {id, email, groupId, isAdmin} = user;
+    const [notAllowToDelete,setNotAllowToDelete ] = useState(false);
     let groupName;
     if (groupId && groups) {
         groupName = groupNameById(groupId, groups);
@@ -13,7 +14,12 @@ const User = ({user, allowToRerender, allowToUpdateForm, groups}) => {
     }
 
 
+
     const deleteUser = async () => {
+        if (!isAdmin) {
+            setNotAllowToDelete(!notAllowToDelete);
+            return;
+        }
         await userService.deleteById(id);
         allowToRerender();
     };
@@ -36,6 +42,7 @@ const User = ({user, allowToRerender, allowToUpdateForm, groups}) => {
                     <button onClick={() => deleteUser()}>Delete</button>
                 </div>
             </div>
+            {notAllowToDelete && <span>To delete user, you must be an admin</span>}
 
         </div>
     );

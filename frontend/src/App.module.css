@@ -1,14 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .navigate {
     display: flex;
     justify-content: space-around;
+    background: black;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-size: 20px;
+    padding: 10px;
+
 }
 
-.active{
-    background: red;
+.active {
+    text-decoration: none;
+    border-bottom: 5px solid orange;
+    border-radius: 20%;
+
 }
 
-
-
-.notActive{
-
+.notActive {
+    text-decoration: none;
 }

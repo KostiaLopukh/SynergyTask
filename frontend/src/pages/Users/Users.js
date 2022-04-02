@@ -125,7 +125,7 @@ const Users = () => {
                 </div>
                 <input type="submit" value={'Create'}/>
             </form>}
-            {notAllowToCreate && <span>To create user, in advance you have to create group!</span>}
+            {notAllowToCreate && <span>To create user, beforehand you have to create group!</span>}
 
         </div>
 

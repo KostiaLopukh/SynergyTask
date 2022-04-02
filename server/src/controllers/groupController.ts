@@ -1,13 +1,16 @@
 import {NextFunction, Request, Response} from 'express';
 import {getManager} from 'typeorm';
+
+import {ErrorHandler} from '../errors/errorHandler';
 import {Group, User} from '../entity';
 import {ParamsDictionary} from '../interfaces/ParamsDictionary';
-import {ErrorHandler} from '../errors/errorHandler';
+import {IGroup} from '../interfaces/IGroup';
+import {IUser} from "../interfaces/IUser";
 
 class GroupController {
     public async getAll(req: Request, res: Response, next: NextFunction) {
         try {
-            const groups = await getManager().getRepository(Group)
+            const groups: IGroup[] = await getManager().getRepository(Group)
                 .find();
 
             res.json(groups);
@@ -16,7 +19,7 @@ class GroupController {
         }
     }
 
-    public async update(req: Request, res: Response, next: NextFunction) {
+    public async update(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const {name, description} = req.body;
             const {id}: ParamsDictionary = req.params;
@@ -29,10 +32,10 @@ class GroupController {
         }
     }
 
-    public async deleteById(req: Request, res: Response, next: NextFunction) {
+    public async deleteById(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const {id}: ParamsDictionary = req.params;
-            const user = await getManager().getRepository(User)
+            const user: IUser | null = await getManager().getRepository(User)
                 .createQueryBuilder('user')
                 .where('user.groupId = :id', {id})
                 .getOne();
@@ -45,21 +48,19 @@ class GroupController {
             await getManager().getRepository(Group)
                 .delete({id});
 
-
             res.end();
         } catch (e) {
             next(e);
         }
     }
 
-    public async create(req: Request, res: Response, next: NextFunction) {
+    public async create(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const {name, description} = req.body;
             await getManager().getRepository(Group)
                 .save({group: name, description});
 
-            res.json('Created');
-
+            res.end();
         } catch (e) {
             next(e);
         }

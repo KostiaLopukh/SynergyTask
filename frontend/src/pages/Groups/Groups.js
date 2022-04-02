@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
+
 import css from "../Users/User.module.css";
-import style from './Groups.module.css';
 import {groupService} from "../../services/groupService";
 import Group from "../../components/Group/Group";
+import style from './Groups.module.css';
 
 const Groups = () => {
     const [groups, setGroups] = useState(null);

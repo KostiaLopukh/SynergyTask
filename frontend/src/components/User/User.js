@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
+
 import css from "../../pages/Users/User.module.css";
-import {userService} from "../../services/userService";
 import {groupNameById} from "../../helpers/groupNameById";
+import {userService} from "../../services/userService";
 
 const User = ({user, allowToRerender, allowToUpdateForm, groups}) => {
     let {id, email, groupId, isAdmin} = user;

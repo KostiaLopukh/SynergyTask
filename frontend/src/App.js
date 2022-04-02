@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link, NavLink, Route, Routes} from "react-router-dom";
-import Users from "./pages/Users/Users";
-import Groups from "./pages/Groups/Groups";
+
 import css from './App.module.css';
+import Groups from "./pages/Groups/Groups";
+import Users from "./pages/Users/Users";
 
 const App = () => {
     return (

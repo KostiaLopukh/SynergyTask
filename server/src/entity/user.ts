@@ -1,6 +1,7 @@
 import {Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
-import {Group} from './group';
+
 import {configs} from '../contants/configs';
+import {Group} from './group';
 
 
 @Entity('User', {database: configs.MYSQL_DATABASE_NAME})

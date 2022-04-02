@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
 import css from './User.module.css';
+import {groupService} from "../../services/groupService";
 import {userService} from "../../services/userService";
 import User from "../../components/User/User";
-import {groupService} from "../../services/groupService";
 
 const Users = () => {
     const [users, setUsers] = useState(null);

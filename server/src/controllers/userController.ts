@@ -1,12 +1,14 @@
 import {NextFunction, Request, Response} from 'express';
 import {getManager} from 'typeorm';
-import {User} from '../entity/user';
+
+import {User} from '../entity';
 import {ParamsDictionary} from '../interfaces/ParamsDictionary';
+import {IUser} from '../interfaces/IUser';
 
 class UserController {
     public async getAll(req: Request, res: Response, next: NextFunction) {
         try {
-            const users = await getManager().getRepository(User)
+            const users: IUser[] = await getManager().getRepository(User)
                 .find();
 
             res.json(users);
@@ -19,32 +21,31 @@ class UserController {
     public async create(req: Request, res: Response, next: NextFunction) {
         try {
             const {emailToCreate, groupIdToCreate} = req.body;
-            const createUser = await getManager().getRepository(User)
+            const createUser:IUser = await getManager().getRepository(User)
                 .save({
                     email: emailToCreate,
                     groupId: groupIdToCreate
                 });
 
             res.json(createUser);
-
         } catch (e) {
             next(e);
         }
     }
 
-    public async deleteById(req: Request, res: Response, next: NextFunction) {
+    public async deleteById(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const {id}: ParamsDictionary = req.params;
-            const user = await getManager().getRepository(User)
+            await getManager().getRepository(User)
                 .delete({id});
 
-            res.json(user);
+            res.status(200).end();
         } catch (e) {
             next(e);
         }
     }
 
-    public async updateAdminStatus(req: Request, res: Response, next: NextFunction) {
+    public async updateAdminStatus(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const {id}: ParamsDictionary = req.params;
             const {isAdmin} = req.body;
@@ -52,20 +53,21 @@ class UserController {
             await getManager().getRepository(User)
                 .update({id}, {isAdmin: !isAdmin});
 
-            res.json('Updated');
+            res.status(200).end();
+
         } catch (e) {
             next(e);
         }
     }
 
-    public async updateSingleUser(req: Request, res: Response, next: NextFunction) {
+    public async updateSingleUser(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const {id}: ParamsDictionary = req.params;
             const {email, groupId} = req.body;
             await getManager().getRepository(User)
                 .update({id}, {email, groupId});
 
-            res.json('Updated');
+            res.status(200).end();
         } catch (e) {
             next(e);
         }

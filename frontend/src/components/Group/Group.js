@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
+
 import css from "../../pages/Users/User.module.css";
-import style from "../../pages/Groups/Groups.module.css";
 import {groupService} from "../../services/groupService";
+import style from "../../pages/Groups/Groups.module.css";
 
 const Group = ({group, openFormUpdate, allowToRerender}) => {
     const [notAllowToDelete, setNotAllowToDelete] = useState(false);
@@ -34,11 +35,12 @@ const Group = ({group, openFormUpdate, allowToRerender}) => {
                     <div className={`${style.createdAt}`}>{createdDate}</div>
 
                     <div className={css.actions}>
-                        <button onClick={()=>openFormUpdate(group)}>Update</button>
-                        <button onClick={()=>deleteGroup(id)}>Delete</button>
+                        <button onClick={() => openFormUpdate(group)}>Update</button>
+                        <button onClick={() => deleteGroup(id)}>Delete</button>
                     </div>
                 </div>
-                {notAllowToDelete && <span>To delete this group, in advance you have to delete user, connected to this group</span>}
+                {notAllowToDelete &&
+                    <span>To delete this group, in advance you have to delete user, connected to this group</span>}
             </div>
         </div>
     );

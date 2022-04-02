@@ -4,7 +4,6 @@ import css from './User.module.css';
 import {userService} from "../../services/userService";
 import User from "../../components/User/User";
 import {groupService} from "../../services/groupService";
-import {groupNameById} from "../../helpers/groupNameById";
 
 const Users = () => {
     const [users, setUsers] = useState(null);
@@ -21,6 +20,7 @@ const Users = () => {
     const [emailToUpdate, setEmailToUpdate] = useState('');
 
     const [rerender, setRerender] = useState(0);
+    const [notAllowToCreate, setNotAllowToCreate] = useState(false);
 
 
     useEffect(async () => {
@@ -40,6 +40,7 @@ const Users = () => {
             e.preventDefault();
             await userService.create(emailToCreate, groupIdToCreate);
             setRerender(rerender + 1);
+            setCreateForm(!createForm);
         } catch (e) {
             console.log(e);
         }
@@ -67,6 +68,17 @@ const Users = () => {
         setEmailToUpdate(user.email)
         setGroupIdToUpdate(user.groupId)
     };
+
+    const openCreateForm = () => {
+        if (groups.length===0) {
+            setNotAllowToCreate(true);
+            return;
+        }
+        setCreateForm(!createForm);
+        if (groups.length === 1) {
+            setGroupIdToCreate(groups[0].id)
+        }
+    }
 
     return (
         <div className={css.row}>
@@ -98,7 +110,7 @@ const Users = () => {
                                                   allowToUpdateForm={allowToUpdateForm} groups={groups}/>)}
             </div>
             <div className={css.create}>
-                <button onClick={() => setCreateForm(!createForm)}>Create user</button>
+                <button onClick={() => openCreateForm()}>Create user</button>
             </div>
             {createForm && <form action="" className={css.createForm} onSubmit={create}>
                 <div>
@@ -113,7 +125,7 @@ const Users = () => {
                 </div>
                 <input type="submit" value={'Create'}/>
             </form>}
-
+            {notAllowToCreate && <span>To create user, in advance you have to create group!</span>}
 
         </div>
 

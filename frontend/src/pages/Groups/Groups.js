@@ -39,6 +39,7 @@ const Groups = () => {
             e.preventDefault();
             await groupService.update(groupIdToChange, groupName, groupDescriptionToChange);
             setRerender(rerender + 1);
+            setOpenForm(!openForm)
         } catch (e) {
             console.log(e);
         }
@@ -49,6 +50,7 @@ const Groups = () => {
             e.preventDefault();
             await groupService.create(groupNameToCreate, groupDescriptionToCreate)
             setRerender(rerender + 1);
+            setCreateForm(!createForm)
         } catch (e) {
             console.log(e);
         }
@@ -85,7 +87,8 @@ const Groups = () => {
                     <input type="text" placeholder={'Name'} onChange={(e) => setGroupNameToCreate(e.target.value)}/>
                 </div>
                 <div>
-                    <input type="text" placeholder={'Description'} onChange={(e) => setGroupDescriptionNameToCreate(e.target.value)}/>
+                    <input type="text" placeholder={'Description'}
+                           onChange={(e) => setGroupDescriptionNameToCreate(e.target.value)}/>
                 </div>
                 <input type="submit" value={'Create'}/>
             </form>}

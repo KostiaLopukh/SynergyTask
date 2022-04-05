@@ -7,21 +7,34 @@
 .navigate {
     display: flex;
     justify-content: space-around;
-    background: black;
+    /*background: black;*/
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     font-size: 20px;
     padding: 10px;
-
 }
 
 .active {
     text-decoration: none;
-    border-bottom: 5px solid orange;
+    border-bottom: 5px solid #82BEDCFF;
     border-radius: 20%;
-
+    color: #d2bdff;
 }
 
 .notActive {
+    color: #d2bdff;
     text-decoration: none;
+    transition: transform 250ms ease-in-out;
+}
+
+.notActive:after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px #82BEDCFF;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.notActive:hover:after {
+    transform: scaleX(1);
 }

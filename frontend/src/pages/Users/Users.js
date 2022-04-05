@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
 import css from './User.module.css';
+import background from '../../commonStyles/background.module.css';
+import buttons from '../../commonStyles/buttons.module.css';
+
 import {groupService} from "../../services/groupService";
 import {userService} from "../../services/userService";
 import User from "../../components/User/User";
@@ -70,7 +73,7 @@ const Users = () => {
     };
 
     const openCreateForm = () => {
-        if (groups.length===0) {
+        if (groups.length === 0) {
             setNotAllowToCreate(true);
             return;
         }
@@ -80,55 +83,107 @@ const Users = () => {
         }
     }
 
-    return (
-        <div className={css.row}>
-            <div className={css.table}>
+    return (<div className={background.bubbles}>
 
-                {updateForm && userToUpdate && <form className={css.updateForm} onSubmit={update}>
-                    <div>
-                        <input type="text" defaultValue={userToUpdate.email}
-                               onChange={(e) => setEmailToUpdate(e.target.value)}/>
+            <div className={css.row}>
+                <div className={css.table}>
+
+                    {updateForm && userToUpdate && <form className={css.updateForm} onSubmit={update}>
+                        <div>
+                            <input type="text" defaultValue={userToUpdate.email} className={css.createFormInput}
+                                   onChange={(e) => setEmailToUpdate(e.target.value)}/>
+                        </div>
+                        <div className={css.createSelect}>
+                            <select name={'group'} defaultValue={groups[0].id} className={css.createSelectSelect}
+                                    onChange={(e) => setGroupIdToUpdate(e.target.value)}>
+                                {groups && groups.map((group) => <option key={group.id}
+                                                                         value={group.id}> {group.group} </option>)}
+                            </select>
+                        </div>
+                        <input type="submit" value={'Edit'}/>
+                    </form>}
+
+                    <div className={css.header}>
+                        <div className={css.id}>id</div>
+                        <div className={css.email}>Email</div>
+                        <div className={css.group}>Group</div>
+                        <div className={css.admin}>Admin</div>
+                        <div className={css.actions}>Actions</div>
                     </div>
+                    {users && users.map(user => <User key={user.id} user={user} allowToRerender={allowToRerender}
+                                                      allowToUpdateForm={allowToUpdateForm} groups={groups}/>)}
+                </div>
+                <div className={css.create}>
+                    <div className={buttons.button} onClick={() => openCreateForm()}/>
+                </div>
+                {createForm && <form action="" className={css.createForm} onSubmit={create}>
                     <div>
-                        <select name={'group'} defaultValue={groups[0].id}
-                                onChange={(e) => setGroupIdToUpdate(e.target.value)}>
+                        <input type="text" name={'email'} className={css.createFormInput}
+                               onChange={(e) => setEmailToCreate(e.target.value)}/>
+                    </div>
+                    <div className={css.createSelect}>
+                        <select name={'group'} className={css.createSelectSelect}
+                                onChange={(e) => setGroupIdToCreate(e.target.value)}>
                             {groups && groups.map((group) => <option key={group.id}
                                                                      value={group.id}> {group.group} </option>)}
                         </select>
                     </div>
-                    <input type="submit" value={'Edit'}/>
+                    <input type="submit" value={'Create'} className={`${css.createButton} ${buttons.submitButton}`}/>
                 </form>}
+                {notAllowToCreate && <span>To create user, beforehand you have to create group!</span>}
 
-                <div className={css.header}>
-                    <div className={css.id}>id</div>
-                    <div className={css.email}>Email</div>
-                    <div className={css.group}>Group</div>
-                    <div className={css.admin}>Admin</div>
-                    <div className={css.actions}>Actions</div>
-                </div>
-                {users && users.map(user => <User key={user.id} user={user} allowToRerender={allowToRerender}
-                                                  allowToUpdateForm={allowToUpdateForm} groups={groups}/>)}
             </div>
-            <div className={css.create}>
-                <button onClick={() => openCreateForm()}>Create user</button>
-            </div>
-            {createForm && <form action="" className={css.createForm} onSubmit={create}>
-                <div>
-                    <input type="text" name={'email'} onChange={(e) => setEmailToCreate(e.target.value)}/>
-                </div>
-                <div>
-                    <select name={'group'}
-                            onChange={(e) => setGroupIdToCreate(e.target.value)}>
-                        {groups && groups.map((group) => <option key={group.id}
-                                                                 value={group.id}> {group.group} </option>)}
-                    </select>
-                </div>
-                <input type="submit" value={'Create'}/>
-            </form>}
-            {notAllowToCreate && <span>To create user, beforehand you have to create group!</span>}
-
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
         </div>
-
     );
 };
 

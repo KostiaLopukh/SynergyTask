@@ -4,6 +4,8 @@ import css from "../Users/User.module.css";
 import {groupService} from "../../services/groupService";
 import Group from "../../components/Group/Group";
 import style from './Groups.module.css';
+import buttons from '../../commonStyles/buttons.module.css';
+import background from '../../commonStyles/background.module.css';
 
 const Groups = () => {
     const [groups, setGroups] = useState(null);
@@ -57,42 +59,105 @@ const Groups = () => {
         }
     }
 
-    return (
-        <div className={css.row}>
-            <div className={css.table}>
+    return (<div className={background.bubbles}>
+            <div className={css.row}>
+                <div className={css.table}>
+
+                    <div className={css.header}>
+                        <div className={`${css.id} ${style.id}`}>id</div>
+                        <div className={`${css.email} ${style.name}`}>Name</div>
+                        <div className={`${css.group} ${style.description}`}>Description</div>
+                        <div className={`${style.createdAt}`}>Created At</div>
+                        <div className={css.actions}>Actions</div>
+                    </div>
+
+                    <div className={css.create}>
+                        <div onClick={() => setCreateForm(!createForm)} className={buttons.button}/>
+                    </div>
+
+
+                    {groups && groups.map(group => <Group key={group.id} group={group} openFormUpdate={openFormUpdate}
+                                                          allowToRerender={allowToRerender}/>)}
+                </div>
                 {openForm && <form onSubmit={submit}>
-                    <input type="text" defaultValue={groupName} onChange={(e) => setGroupNameToChange(e.target.value)}/>
-                    <input type="text" defaultValue={groupDescriptionToChange}
-                           onChange={(e) => setGroupDescriptionToChange(e.target.value)}/>
-                    <input type="submit" value={'Update'}/>
+                    <div className={style.updateFormRow}>
+                        <div>
+                            <input type="text" defaultValue={groupName}
+                                   onChange={(e) => setGroupNameToChange(e.target.value)}/>
+                        </div>
+                        <div>
+                            <input type="text" defaultValue={groupDescriptionToChange}
+                                   onChange={(e) => setGroupDescriptionToChange(e.target.value)}/>
+                        </div>
+                        <div>
+                            <input type="submit" value={'Update'} className={buttons.submitButton}/>
+                        </div>
+                    </div>
                 </form>}
-
-                <div className={css.header}>
-                    <div className={`${css.id} ${style.id}`}>id</div>
-                    <div className={`${css.email} ${style.name}`}>Name</div>
-                    <div className={`${css.group} ${style.description}`}>Description</div>
-                    <div className={`${style.createdAt}`}>Created At</div>
-                    <div className={css.actions}>Actions</div>
-                </div>
-
-                <div className={css.create}>
-                    <button onClick={() => setCreateForm(!createForm)}>Create group</button>
-                </div>
-
-
-                {groups && groups.map(group => <Group key={group.id} group={group} openFormUpdate={openFormUpdate}
-                                                      allowToRerender={allowToRerender}/>)}
+                {createForm && <form action="" className={css.createForm} onSubmit={create}>
+                    <div className={style.createFormRow}>
+                        <div>
+                            <input type="text" placeholder={'Name'}
+                                   onChange={(e) => setGroupNameToCreate(e.target.value)}/>
+                        </div>
+                        <div>
+                            <input type="text" placeholder={'Description'}
+                                   onChange={(e) => setGroupDescriptionNameToCreate(e.target.value)}/>
+                        </div>
+                        <input type="submit" value={'Create'} className={`${buttons.submitButton} ${style.createButton}`}/>
+                    </div>
+                </form>}
             </div>
-            {createForm && <form action="" className={css.createForm} onSubmit={create}>
-                <div>
-                    <input type="text" placeholder={'Name'} onChange={(e) => setGroupNameToCreate(e.target.value)}/>
-                </div>
-                <div>
-                    <input type="text" placeholder={'Description'}
-                           onChange={(e) => setGroupDescriptionNameToCreate(e.target.value)}/>
-                </div>
-                <input type="submit" value={'Create'}/>
-            </form>}
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
+            <div className={background.bubble}/>
         </div>
     );
 };

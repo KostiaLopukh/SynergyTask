@@ -13,7 +13,30 @@
 .createdAt{
     width: 150px;
     text-align: center;
-    border-right: 1px solid silver;
+    border-right: 1px solid #b090fa;
+    color: #82BEDCFF;
 }
+
+.updateFormRow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+.createFormRow {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+
+.createButton{
+    width: 120px;
+}
+
+
 
 

@@ -1,16 +1,11 @@
-.row{
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*justify-content: center;*/
-    /*align-content: center;*/
-    /*margin: 0 auto;*/
+.row {
     position: relative;
 }
 
 .create {
     position: absolute;
-    left: 0;
-    top: -100px;
+    left: -10px;
+    top: -200px;
 }
 
 .table {
@@ -19,59 +14,103 @@
     justify-content: center;
     align-items: center;
     margin-top: 300px;
+}
 
+input[type=text] {
+    border: 4px solid #b090fa;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+.createSelectSelect {
+    font-size: 15px;
+    border: 4px solid #b090fa;
 }
 
 .createForm {
+    margin-left: 10px;
+}
 
+.createButton {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.createSelect {
+    margin-bottom: 5px;
+}
+
+.createFormInput {
+    margin-bottom: 5px;
 }
 
 .updateForm {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-content: center;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.updateFormWrap {
 }
 
 
 .header {
     display: flex;
     justify-content: center;
-    border: 1px solid silver;
+    border: 1px solid #b090fa;
     font-size: 20px;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 .id {
     width: 50px;
+    color: #82BEDCFF;
     text-align: center;
-    border-right: 1px solid silver;
+    border-right: 1px solid #b090fa;
+    padding: 3px;
 }
 
 .email {
     text-align: center;
+    color: #82BEDCFF;
     width: 300px;
-    border-right: 1px solid silver;
+    border-right: 1px solid #b090fa;
+    padding: 3px;
 }
 
 .group {
-    border-right: 1px solid silver;
-    width: 100px;
+    border-right: 1px solid #b090fa;
+    color: #82BEDCFF;
+    width: 200px;
     text-align: center;
+    padding: 3px;
 }
 
 .admin {
     width: 120px;
     text-align: center;
-    border-right: 1px solid silver;
+    color: #82BEDCFF;
+    border-right: 1px solid #b090fa;
+    padding: 3px;
 }
 
 .actions {
-    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+    color: #82BEDCFF;
+    width: 300px;
     text-align: center;
+    padding: 5px;
 }
 
-
-
-
-
+span {
+    font-size: 20px;
+    color: #82BEDCFF;
+    padding: 5px;
+}
